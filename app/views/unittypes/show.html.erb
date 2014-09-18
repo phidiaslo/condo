@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @unittype.name %>
+</p>
+
+<p>
+  <strong>Sqft:</strong>
+  <%= @unittype.sqft %>
+</p>
+
+<p>
+  <strong>Property name:</strong>
+  <%= @unittype.property_name %>
+</p>
+
+<%= link_to 'Edit', edit_unittype_path(@unittype) %> |
+<%= link_to 'Back', unittypes_path %>

@@ -1,0 +1,26 @@
+<div class="container">
+
+<div class="row">
+  <div class="col-md-8">
+    <h1>Latest News & Announcements</h1>
+      <% @bulletins.each do |bulletin| %>
+        <div class="post">
+          <h2><%= link_to_unless_current bulletin.subject_title, @bulletin %></h2>
+          <p><%= bulletin.content.truncate(160).html_safe %></p>
+          <p><%= link_to 'Read More', bulletin %></p>
+        </div>
+      <% end %>
+
+      
+  </div>
+  <div class="col-md-4">
+    
+  </div>
+</div>
+
+<br>
+<%= link_to 'New Bulletin', new_bulletin_path %>
+
+</div>
+
+

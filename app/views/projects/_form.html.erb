@@ -1,0 +1,25 @@
+<%= simple_form_for(@project,
+					wrapper_mappings: { boolean: :vertical_boolean}) do |f| %>
+
+    <div class="form-group">
+      <%= f.input :name, input_html: { class: 'form-control' } %>
+    </div>
+
+    <div class="form-group">
+      <%= f.input :client, input_html: { class: 'form-control' } %>
+    </div>
+
+    <% if @project.persisted? %>
+     <!--<%= f.input :archived, as: :boolean %>-->
+    <div class="form-group">
+       <%= f.check_box :archived %>
+       <%= f.label :archived %>
+    </div>
+
+    <% end %>
+
+    <div class="form-group">
+      <%= f.button :submit, class: 'btn btn-primary' %>
+    </div>
+
+<% end %>

@@ -1,0 +1,19 @@
+<%= simple_form_for(@unittype) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-group">
+    <%= f.input :name, label: 'Type Name', input_html: { class: 'form-control' } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :sqft, label: 'Square Feet', input_html: { class: 'form-control' } %>
+  </div>
+
+   <div class="form-group">
+    <%= f.input :property_name, label: 'Property', prompt: 'Select Property', collection: @unittype.select_property, input_html: { class: 'form-control' } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

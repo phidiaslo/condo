@@ -1,0 +1,39 @@
+<div class="container">
+
+<h1>Property Units</h1>
+
+<div class="button-bar">
+  <%= link_to 'New Unit', new_unit_path, class: "btn btn-button btn-shadow" %>
+</div>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Unit No.</th>
+      <th>Type</th>
+      <th>Water Meter No.</th>
+      <th>Service Charge</th>
+      <th>Sinking Fund</th> 
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @units.each do |unit| %>
+      <tr>
+        <td><%= unit.property_name %></td>
+        <td><%= unit.lot_no %></td>
+        <td><%= unit.unit_type %></td>
+        <td><%= unit.water_meter %></td>
+        <td><%= number_to_currency(unit.service_charge) %></td>
+        <td><%= number_to_currency(unit.sinking_fund) %></td>
+        <td><%= link_to 'Show', unit %></td>
+        <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
+        <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>

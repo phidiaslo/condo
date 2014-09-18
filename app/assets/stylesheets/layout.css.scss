@@ -1,0 +1,60 @@
+#flash_notice {
+  @extend .alert;
+  @extend .alert-success;
+}
+#flash_error, #flash_alert {
+  @extend .alert;
+  @extend .alert-danger;
+}
+#flash_warning {
+  @extend .alert;
+  @extend .alert-warning;
+}
+
+.navbar .right-buttons {
+  margin-right: 15px;
+  margin-left: 25px;
+}
+
+.navbar {
+  border-radius: 0px;
+ }
+
+ .button-bar {
+	background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#ededed),color-stop(100%,#dbdbdb));
+	background-image: -webkit-linear-gradient("top",#ededed,#dbdbdb);
+	background-image: -moz-linear-gradient("top",#ededed,#dbdbdb);
+	background-image: -o-linear-gradient("top",#ededed,#dbdbdb);
+	background-image: linear-gradient("top",#ededed,#dbdbdb);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-o-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: inset 0 2px 0 -1px #fff;
+	-moz-box-shadow: inset 0 2px 0 -1px #fff;
+	box-shadow: inset 0 2px 0 -1px #fff;
+	border: 1px solid #b0b0b0;
+	padding: 8px 10px;
+	margin-bottom: 20px;
+	
+}
+
+.btn-button {
+	border-radius: 20px;
+	background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#ededed),color-stop(100%,#dbdbdb));
+	border: 1px solid #b0b0b0;
+	color: #686868;
+}
+
+.btn-shadow {
+	background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#fafafa),color-stop(100%,#cecece));
+	background-image: -webkit-linear-gradient("top",#fafafa,#cecece);
+	background-image: -moz-linear-gradient("top",#fafafa,#cecece);
+	background-image: -o-linear-gradient("top",#fafafa,#cecece);
+	background-image: linear-gradient("top",#fafafa,#cecece);
+}
+
+.post {
+	border-bottom: 1px dotted #cecece;
+}

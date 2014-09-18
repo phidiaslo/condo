@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="col-md-8">
+     <h2><%= link_to_unless_current @bulletin.subject_title, @bulletin %></h2>
+     <p><%= @bulletin.content.html_safe %></p>
+  </div>
+  <div class="col-md-4">
+    
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_bulletin_path(@bulletin) %> |
+<%= link_to 'Back', bulletins_path %>

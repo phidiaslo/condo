@@ -1,0 +1,23 @@
+<%= simple_form_for(@property) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-group">
+    <%= f.input :name, label: 'Property Name', input_html: { class: 'form-control' } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :address, label: 'Management Office Address', input_html: { class: 'form-control' } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :sc_rate, label: 'Service Charge Rate(RM per SQFT)', input_html: { class: 'form-control' } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :sinking_rate, label: 'Sinking Fund Rate(%)', input_html: { class: 'form-control' } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

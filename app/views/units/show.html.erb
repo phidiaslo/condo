@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Lot no:</strong>
+  <%= @unit.lot_no %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @unit.unit_type %>
+</p>
+
+<p>
+  <strong>Water meter:</strong>
+  <%= @unit.water_meter %>
+</p>
+
+<%= link_to 'Edit', edit_unit_path(@unit) %> |
+<%= link_to 'Back', units_path %>

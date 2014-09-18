@@ -1,0 +1,33 @@
+<div class="container">
+
+<h1>Settings - Unit Types</h1>
+
+<div class="button-bar">
+  <%= link_to 'New Unit Type', new_unittype_path, class: "btn btn-button btn-shadow" %>
+</div>
+
+<table class="table table-striped table-bordered"> 
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Sqft</th>
+      <th>Property name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @unittypes.each do |unittype| %>
+      <tr>
+        <td><%= unittype.name %></td>
+        <td><%= unittype.sqft %></td>
+        <td><%= unittype.property_name %></td>
+        <td><%= link_to 'Show', unittype %></td>
+        <td><%= link_to 'Edit', edit_unittype_path(unittype) %></td>
+        <td><%= link_to 'Destroy', unittype, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>

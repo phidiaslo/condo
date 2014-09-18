@@ -1,0 +1,23 @@
+<%= simple_form_for(@unit) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-group">
+    <%= f.input :property_name, label: 'Property Name', prompt: 'Select Type', collection: @unit.select_property, input_html: { class: 'form-control' } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :unit_type, label: 'Unit Type', prompt: 'Select Type', collection: @unit.select_type, input_html: { class: 'form-control' } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :lot_no, label: 'Unit No.', input_html: { class: 'form-control' } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :water_meter, label: 'Water Meter No.', input_html: { class: 'form-control' } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+<% end %>
