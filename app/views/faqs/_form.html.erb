@@ -1,0 +1,19 @@
+<%= simple_form_for(@faq) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-group">
+    <%= f.input :property_name, label: 'Property', prompt: 'Select Property', collection: @faq.select_property, input_html: { class: 'form-control' } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :question, placeholder: 'Enter Your Question Here', input_html: { class: 'form-control' } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :answer, placeholder: 'Enter Your Answer Here', input_html: { class: 'form-control' } %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.button :submit, class: "btn btn-primary" %>
+  </div>
+<% end %>

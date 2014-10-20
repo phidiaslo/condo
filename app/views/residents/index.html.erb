@@ -1,0 +1,46 @@
+<div class="container">
+
+<h1>Resident List</h1>
+
+<div class="button-bar">
+  <%= link_to 'New Member', new_resident_registration_path, target: "_blank", class: "btn btn-button btn-shadow" %>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Lot</th>
+      <th>Type</th>
+      <th>Name</th>
+      <th>Gender</th>
+      <th>Birthday</th>
+      <th>Marital Status</th>
+      <th>Profession</th>
+      <th>Mobile No.</th>
+      <th>Joined</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @residents.each do |resident| %>
+      <tr>
+        <td><%= resident.property_name %></td>
+        <td><%= resident.lot_no %></td>
+        <td><%= resident.resident_type %></td>
+        <td><%= resident.name %></td>
+        <td><%= resident.gender %></td>
+        <td><%= resident.birthday.strftime("%b %-d, %Y") %></td>
+        <td><%= resident.marital_status %></td>
+        <td><%= resident.profession %></td>
+      	<td><%= resident.mobile_no %></td>
+        <td><%= resident.created_at.strftime("%b %-d, %Y") %></td>
+        <td><%= link_to "Show", resident_show_path(resident) %></td>
+        <td><%= link_to "Destroy", user_destroy_resident_path(resident), :method => :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>

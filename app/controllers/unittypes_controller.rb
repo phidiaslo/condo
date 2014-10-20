@@ -1,5 +1,6 @@
 class UnittypesController < ApplicationController
   before_action :set_unittype, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
   # GET /unittypes
   def index

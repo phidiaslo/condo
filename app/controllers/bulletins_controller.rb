@@ -1,6 +1,8 @@
 class BulletinsController < ApplicationController
   before_action :set_bulletin, only: [:show, :edit, :update, :destroy]
-
+  before_filter :auth_user!, only: [:show]
+  before_filter :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
+ 
   # GET /bulletins
   def index
     @bulletins = Bulletin.all

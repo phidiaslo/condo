@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="col-md-8">
-    <h1>Latest News & Announcements</h1>
+    <h1>News & Announcements</h1>
       <% @bulletins.each do |bulletin| %>
         <div class="post">
           <h2><%= link_to_unless_current bulletin.subject_title, @bulletin %></h2>
@@ -19,8 +19,10 @@
 </div>
 
 <br>
-<%= link_to 'New Bulletin', new_bulletin_path %>
 
+<% if user_signed_in? %>
+  <%= link_to 'New Bulletin', new_bulletin_path %>
+<% end %>
 </div>
 
 

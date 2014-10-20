@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140918044703) do
+ActiveRecord::Schema.define(version: 20141010025433) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,52 @@ ActiveRecord::Schema.define(version: 20140918044703) do
     t.string   "post_to"
     t.string   "subject_title"
     t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "contacts", force: true do |t|
+    t.string   "name"
+    t.string   "contact_no"
+    t.string   "importance"
+    t.text     "address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "faqs", force: true do |t|
+    t.string   "property_name"
+    t.string   "question"
+    t.text     "answer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "invoices", force: true do |t|
+    t.string   "inv_no"
+    t.date     "inv_date"
+    t.date     "due_date"
+    t.string   "lot_no"
+    t.string   "recipient"
+    t.text     "address"
+    t.text     "description"
+    t.decimal  "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "property_name"
+    t.string   "status"
+  end
+
+  create_table "owners", force: true do |t|
+    t.string   "name"
+    t.string   "ic_no"
+    t.string   "email"
+    t.string   "mobile_no"
+    t.string   "emergency_no"
+    t.text     "address"
+    t.string   "property_name"
+    t.string   "lot_no"
+    t.string   "ref_no"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -47,6 +93,35 @@ ActiveRecord::Schema.define(version: 20140918044703) do
     t.decimal  "sc_rate",      precision: 10, scale: 2
     t.decimal  "sinking_rate", precision: 10, scale: 2
   end
+
+  create_table "residents", force: true do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.string   "ic_no"
+    t.string   "gender"
+    t.date     "birthday"
+    t.string   "marital_status"
+    t.string   "profession"
+    t.string   "property_name"
+    t.string   "lot_no"
+    t.string   "mobile_no"
+    t.string   "emergency_no"
+    t.string   "resident_type"
+  end
+
+  add_index "residents", ["email"], name: "index_residents_on_email", unique: true, using: :btree
+  add_index "residents", ["reset_password_token"], name: "index_residents_on_reset_password_token", unique: true, using: :btree
 
   create_table "units", force: true do |t|
     t.string   "lot_no"

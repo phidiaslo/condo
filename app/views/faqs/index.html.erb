@@ -1,0 +1,27 @@
+<div class="container">
+
+<div class="row">
+  <div class="col-md-8">
+    <h1>Frequently Asked Questions</h1>
+
+      <% @faqs.each do |faq| %>
+        <div class="post">
+          <h2><%= faq.question %></h2>
+          <p><%= faq.answer %></p>
+          <% if user_signed_in? %>
+            <p><b><%= faq.property_name %></b></p>
+            <p><%= link_to 'Move', edit_faq_path(faq) %> | <%= link_to 'Edit', edit_faq_path(faq) %> | <%= link_to 'Destroy', faq, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+          <% end %>
+        </div>
+      <% end %>
+  </div>
+  <div class="col-md-4">
+    
+  </div>
+</div>
+<br>
+
+<% if user_signed_in? %>
+  <%= link_to 'Create Question', new_faq_path %>
+<% end %>
+</div>

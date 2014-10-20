@@ -1,0 +1,79 @@
+<div class="col-md-6 col-md-offset-3 panel panel-default">
+  <div class="panel-body">
+
+	<h2>Sign up</h2>
+
+	<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+	  <%= f.error_notification %>
+
+	  <div class="form-group">
+	    <%= f.input :property_name, label: 'Property', prompt: 'Select Property', collection: @resident.select_property, input_html: { class: 'form-control' } %>
+	  </div>
+
+   	  <div class="form-group">
+	    <%= f.input :lot_no, label: 'Unit No.', input_html: { class: 'form-control' } %>
+	  </div>
+
+	  <div class="form-group">
+	    <%= f.input :resident_type, label: 'Resident Type', collection: Resident::TYPE_SELECT, selected: ['Owner'], input_html: { class: 'form-control' } %>
+	  </div>
+
+	  <br>
+
+	  <div class="form-group">
+	    <%= f.input :name, label: 'Full Name', input_html: { class: 'form-control' } %>
+	  </div>
+
+	  <div class="form-group">
+	    <%= f.input :ic_no, label: 'I.C. No.', input_html: { class: 'form-control' } %>
+	  </div>
+
+	  <div class="form-group">
+	    <%= f.input :gender, label: 'Gender', collection: Resident::GENDER_SELECT, selected: ['Male'], input_html: { class: 'form-control' } %>
+	  </div>
+
+	  <div class="form-group form-inline">
+	    <%= f.input :birthday, as: :date, start_year: Date.today.year - 18,
+	                              end_year: Date.today.year - 80, 
+	                              order: [:day, :month, :year], label: 'Date of Birth', input_html: { class: 'form-control' } %>
+	  </div>
+
+	  <div class="form-group">
+	    <%= f.input :marital_status, label: 'Marital Status', collection: Resident::STATUS_SELECT, selected: ['Single'], input_html: { class: 'form-control' } %>
+	  </div>
+
+	  <div class="form-group">
+	    <%= f.input :profession, label: 'Profession', input_html: { class: 'form-control' } %>
+	  </div>
+ 
+	  <div class="form-group">
+	    <%= f.input :mobile_no, label: 'Mobile No.', input_html: { class: 'form-control' } %>
+	  </div>
+
+	  <div class="form-group">
+	    <%= f.input :emergency_no, label: 'Emergency Contact No.', input_html: { class: 'form-control' } %>
+	  </div>
+
+	  <br>
+
+      <div class="form-group">
+	    <%= f.input :email, label: 'Email Address', input_html: { class: 'form-control' } %>
+	  </div>
+
+	  <div class="form-group">       
+	    <%= f.input :password, label: 'Password', input_html: { class: 'form-control' } %>
+	  </div>
+
+	  <!-- <div class="form-group">
+	    <%= f.input :password_confirmation, label: 'Password Confirmation', input_html: { class: 'form-control' } %>
+	  </div> -->
+
+	  <div class="form-group">
+	    <%= f.submit "Sign Up", class: "btn btn-primary" %>
+	  </div>
+	<% end %>
+
+	<%= render "residents/shared/links" %>
+
+  </div>
+</div>

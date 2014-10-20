@@ -13,4 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
+//= require lazybox
+//= require tinymce-jquery
 //= require_tree .
+
+$.rails.allowAction = $.lazybox.confirm;
+$.lazybox.settings = {cancelClass: "btn btn-default", submitClass: 'btn btn-danger', overlay: false}

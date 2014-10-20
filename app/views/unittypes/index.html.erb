@@ -3,7 +3,7 @@
 <h1>Settings - Unit Types</h1>
 
 <div class="button-bar">
-  <%= link_to 'New Unit Type', new_unittype_path, class: "btn btn-button btn-shadow" %>
+  <%= link_to 'New Unit Type', new_unittype_path, remote: true, class: "btn btn-button btn-shadow" %>
 </div>
 
 <table class="table table-striped table-bordered"> 
@@ -22,9 +22,9 @@
         <td><%= unittype.name %></td>
         <td><%= unittype.sqft %></td>
         <td><%= unittype.property_name %></td>
-        <td><%= link_to 'Show', unittype %></td>
-        <td><%= link_to 'Edit', edit_unittype_path(unittype) %></td>
-        <td><%= link_to 'Destroy', unittype, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Move', unittype %></td>
+        <td><%= link_to 'Edit', edit_unittype_path(unittype), remote: true %></td>
+        <td><%= link_to 'Delete', unittype, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

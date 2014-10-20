@@ -3,14 +3,14 @@
 <h1>Property List</h1>
 
 <div class="button-bar">
-  <%= link_to 'New Property', new_property_path, class: "btn btn-button btn-shadow" %>
+  <%= link_to 'New Property', new_property_path, remote: true, class: "btn btn-button btn-shadow" %>
 </div>
 
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
       <th>Name</th>
-      <th>Management Office Address</th>
+      <th>Billing Address</th>
       <th>SC Rate</th>
       <th>SF Rate</th>
       <th colspan="3"></th>
@@ -22,11 +22,11 @@
       <tr>
         <td><%= property.name %></td>
         <td><%= property.address %></td>
-        <td><%= property.sc_rate %></td>
-         <td><%= property.sinking_rate %></td>
-        <td><%= link_to 'Show', property %></td>
-        <td><%= link_to 'Edit', edit_property_path(property) %></td>
-        <td><%= link_to 'Destroy', property, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= number_to_currency(property.sc_rate) %> / sqft</td>
+        <td><%= number_to_percentage(property.sinking_rate, precision: 2) %></td>
+        <td><%= link_to 'Move', property %></td>
+        <td><%= link_to 'Edit', edit_property_path(property), remote: true %></td>
+        <td><%= link_to 'Delete', property, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

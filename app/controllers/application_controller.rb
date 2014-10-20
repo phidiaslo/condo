@@ -1,13 +1,15 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  before_filter :load_schema, :authenticate_user!, :set_mailer_host
+  before_filter :load_schema, :auth_user!, :set_mailer_host
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:accept_invitation).concat([:name])
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name, :ic_no, :gender, :birthday, :marital_status, :profession, :mobile_no, :emergency_no, :property_name, :lot_no, :resident_type, :email, :password, :password_confirmation) }
+    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:name, :ic_no, :gender, :birthday, :marital_status, :profession, :mobile_no, :emergency_no, :property_name, :lot_no, :resident_type, :email, :password, :password_confirmation, :current_password) }
   end
 
   private
@@ -41,4 +43,13 @@ class ApplicationController < ActionController::Base
   def after_invite_path_for(resource)
     users_path
   end
+
+  def auth_user!(opts = {})
+    if user_signed_in?
+      authenticate_user!
+    else
+      authenticate_resident!
+    end
+  end
+
  end

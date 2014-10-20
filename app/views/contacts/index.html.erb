@@ -1,0 +1,39 @@
+<div class="container">
+
+<h1>Important Contacts</h1>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Contact no</th>
+      <th>Importance</th>
+      <th>Address</th>
+      <% if user_signed_in? %>
+        <th colspan="3"></th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contacts.each do |contact| %>
+      <tr>
+        <td><%= contact.name %></td>
+        <td><%= contact.contact_no %></td>
+        <td><%= contact.importance %></td>
+        <td><%= contact.address %></td>
+        <% if user_signed_in? %>
+          <td><%= link_to 'Move', contact %></td>
+          <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
+          <td><%= link_to 'Delete', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Contact', new_contact_path %>
+
+</div>

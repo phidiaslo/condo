@@ -1,0 +1,45 @@
+<div class="container">
+
+<h1>Owners List</h1>
+
+<div class="button-bar">
+  <%= link_to 'New Owner', new_owner_path, class: "btn btn-button btn-shadow" %>
+</div>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Property name</th>
+      <th>Lot no</th>
+      <th>Ref No.</th>
+      <th>Name</th>
+      <th>Ic no</th>
+      <th>Email</th>
+      <th>Mobile no</th>
+      <th>Emergency no</th>
+      <th>Billing Address</th>  
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @owners.each do |owner| %>
+      <tr>
+        <td><%= owner.property_name %></td>
+        <td><%= owner.lot_no %></td>
+        <td><%= owner.ref_no %></td>
+        <td><%= owner.name %></td>
+        <td><%= owner.ic_no %></td>
+        <td><%= owner.email %></td>
+        <td><%= owner.mobile_no %></td>
+        <td><%= owner.emergency_no %></td>
+        <td><%= owner.address %></td>
+        <td><%= link_to 'Show', owner %></td>
+        <td><%= link_to 'Edit', edit_owner_path(owner) %></td>
+        <td><%= link_to 'Destroy', owner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>

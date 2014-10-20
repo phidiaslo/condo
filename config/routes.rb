@@ -11,6 +11,19 @@ class SubdomainBlank
 end
 
 Rails.application.routes.draw do
+  resources :invoices
+
+  resources :contacts
+
+  resources :faqs
+
+  resources :owners
+
+  devise_for :residents
+  get 'residents' => "residents#index"
+  get 'residents/:id' => "residents#show", :as => :resident_show
+  match 'residents/:id' => 'residents#destroy', :via => :delete, :as => :user_destroy_resident
+  
   resources :bulletins
 
   resources :unittypes
@@ -18,7 +31,7 @@ Rails.application.routes.draw do
   resources :units
 
   resources :properties
-
+  
   constraints(SubdomainPresent) do
     root 'projects#index', as: :subdomain_root
   	devise_for :users

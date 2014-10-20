@@ -8,26 +8,75 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Payedo</a>
+      <a class="navbar-brand" href="/">
+        <% if resident_signed_in? %>
+          <%= current_resident.property_name %>
+        <% else %>
+          Payedo
+        <% end %>
+      </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
       <% if user_signed_in? %>
-        <li><%= link_to "Bulletins", bulletins_path %></li>
-        <li><%= link_to "Property Units", units_path %></li>
-        <li><%= link_to "Unit Types", unittypes_path %></li>
-        <li><%= link_to "Property List", properties_path %></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Residents <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><%= link_to "News & Bulletins", bulletins_path %></li>
+            <li><%= link_to "FAQ", faqs_path %></li>
+            <li><%= link_to "Directory", contacts_path %></li>
+            <li><%= link_to "Resident List", residents_path %></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Accounting <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><%= link_to "Invoices", invoices_path %></li>  
+          </ul>
+        </li>
+     
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Properties <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><%= link_to "Property List", properties_path %></li>
+            <li><%= link_to "Unit Types", unittypes_path %></li>
+            <li><%= link_to "Unit List", units_path %></li>     
+          </ul>
+        </li>
+
+        <li><%= link_to "Users", users_path %></li>
+
+      <% elsif resident_signed_in? %>     
+        <li><%= link_to "News & Announcements", bulletins_path %></li>
+        <li><%= link_to "Faqs", faqs_path %></li>
       <% end %>
       </ul>
       
 
       <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>
-        <li><%= link_to "Users", users_path %></li>
-        <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
-           
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name %> <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+          </ul>
+        </li>     
+     
+      <% elsif resident_signed_in? %>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_resident.name %> <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><%= link_to "Edit Profile", edit_resident_registration_path %></li>
+            <li><%= link_to "Log Out", destroy_resident_session_path, method: :delete %></li>
+          </ul>
+        </li>     
+      <% else %>
+        
       <% end %>     
       </ul>
       

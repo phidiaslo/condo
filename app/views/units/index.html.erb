@@ -3,7 +3,7 @@
 <h1>Property Units</h1>
 
 <div class="button-bar">
-  <%= link_to 'New Unit', new_unit_path, class: "btn btn-button btn-shadow" %>
+  <%= link_to 'New Unit', new_unit_path, remote: true, class: "btn btn-button btn-shadow" %>
 </div>
 
 <table class="table table-striped table-bordered">
@@ -28,9 +28,9 @@
         <td><%= unit.water_meter %></td>
         <td><%= number_to_currency(unit.service_charge) %></td>
         <td><%= number_to_currency(unit.sinking_fund) %></td>
-        <td><%= link_to 'Show', unit %></td>
-        <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
-        <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Move', unit %></td>
+        <td><%= link_to 'Edit', edit_unit_path(unit), remote: true %></td>
+        <td><%= link_to 'Delete', unit, method: :delete, data: { confirm: 'Attention: Deleting this unit will also delete all the owners, debtors and residents that belongs to it. This action is not reversible! Are you sure you want to delete this unit?' } %></td>
       </tr>
     <% end %>
   </tbody>
